@@ -1,0 +1,36 @@
+﻿@using GMailLabelCleanup.Core.Components
+@model GMailLabelCleanup.Core.ViewModels.Filters.ChooseMessageFilterEntryViewModel
+@{
+    var component = new MessageFilterComponent();
+}
+<tr>
+    <td>@Html.CheckBoxFor(o => o.IsSelected, new { @class = "isSelected" })</td>
+    <td>
+        @Model.EntryId
+        @Html.HiddenFor(o => o.EntryId)
+    </td>
+    <td>
+        <ul>
+            @for (int i = 0; i < Model.CriteriaProperties.Count; i++)
+            {
+                <li>
+                    @component.GetDisplayText(Model.CriteriaProperties[i])
+                    @Html.Hidden("CriteriaProperties[" + i.ToString() + "].Name", Model.CriteriaProperties[i].Name)
+                    @Html.Hidden("CriteriaProperties[" + i.ToString() + "].Value", Model.CriteriaProperties[i].Value)
+                </li>
+            }
+        </ul>
+    </td>
+    <td>
+        <ul>
+            @for (int i = 0; i < Model.ActionProperties.Count; i++)
+            {
+                <li>
+                    @component.GetDisplayText(Model.ActionProperties[i])
+                    @Html.Hidden("ActionProperties[" + i.ToString() + "].Name", Model.ActionProperties[i].Name)
+                    @Html.Hidden("ActionProperties[" + i.ToString() + "].Value", Model.ActionProperties[i].Value)
+                </li>
+            }
+        </ul>
+    </td>
+</tr>

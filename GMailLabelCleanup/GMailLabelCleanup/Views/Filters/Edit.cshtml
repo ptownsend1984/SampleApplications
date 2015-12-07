@@ -1,0 +1,16 @@
+﻿@model GMailLabelCleanup.Core.ViewModels.Filters.EditViewModel
+
+@{
+    ViewBag.Title = "Filters";
+}
+
+<h2>Edit filter</h2>
+<hr />
+
+<div class="container">
+    @Html.Partial("_EditFilterPartial", Model)
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

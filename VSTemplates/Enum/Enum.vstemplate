@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
+    <TemplateData>
+		<TemplateID>PeteApps.Enum</TemplateID>
+		<Icon>iconmonstr-script-4-icon-32.png</Icon>
+        <Name>Enum</Name>
+        <Description>C Sharp enum.</Description>
+        <ProjectType>CSharp</ProjectType>
+        <DefaultName>Enum.cs</DefaultName>
+		<SortOrder>14</SortOrder>
+		<NumberOfParentCategoriesToRollUp>1</NumberOfParentCategoriesToRollUp>
+		<AppliesTo>CSharp + WindowsXaml + WindowsXamlPage + WindowsXamlCodeBehind + MultiTarget</AppliesTo>
+		<TemplateGroupID>WinRT-Managed</TemplateGroupID>
+    </TemplateData>
+    <TemplateContent>
+        <ProjectItem SubType="Code" TargetFileName="$fileinputname$.cs" ReplaceParameters="true">Enum.cs</ProjectItem>
+    </TemplateContent>
+</VSTemplate>

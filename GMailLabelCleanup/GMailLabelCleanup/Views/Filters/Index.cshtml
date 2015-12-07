@@ -1,0 +1,99 @@
+﻿@model GMailLabelCleanup.Core.ViewModels.Filters.IndexViewModel
+@{
+    ViewBag.Title = "Filters";
+
+    var totalCount = Model.Filters.Count;
+}
+
+<h2>Filters</h2>
+<h4>@Html.ActionLink("Create new filter", "Create")</h4>
+<h4>@Html.ActionLink("Import filters", "Import")</h4>
+@if (totalCount > 0)
+{
+    <h4>@Html.ActionLink("Export filters", "Export")</h4>
+    <h4>@Html.ActionLink("Delete all filters", "DeleteAllConfirm")</h4>
+}
+
+<div id="dialog-confirm" class="" title="Delete filter?">
+    <p class="">
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+        This filter will be deleted. Are you sure?
+    </p>
+</div>
+
+@if (totalCount > 0)
+{
+    <hr />
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Import Id</th>
+                    <th />
+                    <th />
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Filters.OrderBy(o => o.Description))
+                {
+                    <tr>
+                        <td>
+                            <div class="multiline">@Html.DisplayFor(o => item.Description)</div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(o => item.ImportId)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.FilterId })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.FilterId }, new { @class = "deleteLink", @name = item.Description })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@section styles {
+    @Styles.Render("~/Content/jquery-ui/css")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jquery-ui")
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#dialog-confirm").dialog({
+                dialogClass: "no-close",
+                autoOpen: false,
+                resizable: false,
+                minHeight: 140,
+                modal: true,
+            })
+
+            $(".deleteLink").click(function (e) {
+                e.preventDefault();
+                var labelName = $(this).attr("name");
+                var targetUrl = $(this).attr("href");
+
+                $("#dialog-confirm").dialog({
+                    buttons: {
+                        "OK": function () {
+                            $(this).dialog("close");
+                            window.location.href = targetUrl;
+                        },
+                        "Cancel": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                $("#dialog-confirm").dialog("open");
+            });
+        });
+    </script>
+}

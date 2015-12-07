@@ -1,0 +1,55 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ck="clr-namespace:XAMLMagicks.Controls.CheckBox"
+    >
+    <Style TargetType="{x:Type ck:CatCheckBox}">
+        <Setter Property="Margin" Value="2pt,0,2pt,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <BulletDecorator Background="#00FFFFFF" SnapsToDevicePixels="True">
+                        <BulletDecorator.Bullet>
+                            <Image x:Name="CatButton" 
+                                   MaxWidth="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ck:CatCheckBox}}, Path=CatMaxWidth}"
+                                   MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ck:CatCheckBox}}, Path=CatMaxHeight}" 
+                                   Source="/XAMLMagicks;component/Resources/HappyCat_64_DIS.png"
+                                   />
+                        </BulletDecorator.Bullet>
+                        <Grid Background="{TemplateBinding Panel.Background}" >
+                            <ContentPresenter RecognizesAccessKey="True" 
+                                              Content="{TemplateBinding ContentControl.Content}" 
+                                              ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                                              ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                                              Margin="{TemplateBinding Control.Padding}" 
+                                              HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                                              VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                                              SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" 
+                                              />
+                        </Grid>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ContentControl.HasContent" Value="True">
+                            <Setter Property="Control.Padding" Value="4,0,0,0" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsEnabled" Value="False">
+                            <Setter Property="Source" TargetName="CatButton" Value="/XAMLMagicks;component/Resources/HappyCat_64_DIS.png" />
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Source" TargetName="CatButton" Value="/XAMLMagicks;component/Resources/HappyCat_64.png" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Source" TargetName="CatButton" Value="/XAMLMagicks;component/Resources/HappyCat_64_HOT.png" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
+

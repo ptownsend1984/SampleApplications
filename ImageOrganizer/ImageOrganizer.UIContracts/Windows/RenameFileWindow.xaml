@@ -1,0 +1,138 @@
+﻿<p:ImageOrganizerWindow x:Class="ImageOrganizer.Contracts.Windows.RenameFileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:p="clr-namespace:ImageOrganizer.Presentation;assembly=ImageOrganizer.Presentation"
+        xmlns:bev="clr-namespace:ImageOrganizer.Presentation.Behaviors;assembly=ImageOrganizer.Presentation"
+        mc:Ignorable="d" 
+        Width="640" Height="410"
+        Title="{Binding WindowTitle, FallbackValue='Rename File'}"
+        WindowStyle="ToolWindow" ShowInTaskbar="False" 
+        d:DesignWidth="300">
+    <p:ImageOrganizerWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ImageOrganizer.Presentation;component/Resources/Styles/ControlStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </p:ImageOrganizerWindow.Resources>
+    <Grid Margin="5pt"
+          >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="5pt" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="5pt" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="3pt" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5pt" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="5pt" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Target="{Binding ElementName=ExistingFileNameTextBox}"
+                       VerticalAlignment="Center"
+                        Content="_Old file name:" 
+                        />
+                <TextBox Grid.Row="0" Grid.Column="2" x:Name="ExistingFileNameTextBox"
+                            Text="{Binding ExistingFileInfo.Name, Mode=OneWay}"
+                            Style="{StaticResource ReadOnlyTextBoxStyle}"
+                            />
+                <Grid Grid.Row="2" Grid.ColumnSpan="3"
+                      >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Grid.Column="0"
+                              Content="Allow extension name conflicts"
+                              IsChecked="{Binding AllowExtensionNameConflicts}"
+                              ToolTip="If checked, a file name conflict will not occur if two files have the same name but different extensions."
+                              />
+                </Grid>
+                <Label Grid.Row="4" Grid.Column="0" Target="{Binding ElementName=NewFileNameTextBox}"
+                        Content="_New file name:" 
+                       VerticalAlignment="Center"
+                        />
+                <ComboBox Grid.Row="4" Grid.Column="2" x:Name="NewFileNameTextBox"
+                          IsEditable="True"
+                          ItemsSource="{Binding AutoCompleteListView}"
+                          Text="{Binding NewFileName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}"
+                          IsTextSearchCaseSensitive="True"
+                          Validation.ErrorTemplate="{StaticResource ErrorTemplateExtraOffset}"
+                          />
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="3pt" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="3pt" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2"
+                  KeyboardNavigation.TabNavigation="None"
+                  KeyboardNavigation.ControlTabNavigation="None"
+                  >
+                <ListBox ItemsSource="{Binding NearbyMatchesListView}"
+                         KeyboardNavigation.IsTabStop="False"
+                         IsSynchronizedWithCurrentItem="True"
+                         ScrollViewer.CanContentScroll="False"
+                         bev:ControlExtensions.IsAutoCenterItem="True"
+                         VirtualizingStackPanel.IsVirtualizing="False"
+                         IsTabStop="False"
+                         >
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsHitTestVisible="False" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="5pt" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" 
+                    MinWidth="50pt" MinHeight="18pt"
+                    Content="_OK"
+                    Command="{Binding OKCommand}"
+                    IsDefault="True"
+                    />
+            <Button Grid.Column="3" 
+                    MinWidth="50pt" MinHeight="18pt"
+                    Content="_Cancel"
+                    Command="{Binding CloseCommand}"
+                    IsCancel="True"
+                    />
+        </Grid>
+    </Grid>
+</p:ImageOrganizerWindow>

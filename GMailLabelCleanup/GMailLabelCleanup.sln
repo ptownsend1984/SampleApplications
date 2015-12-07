@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMailLabelCleanup", "GMailLabelCleanup\GMailLabelCleanup.csproj", "{3A637DEA-CA48-4CCB-B2DE-93437860BC7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMailLabelCleanup.Core", "GMailLabelCleanup.Core\GMailLabelCleanup.Core.csproj", "{0879B23D-AFF1-468F-B1EA-9FBAE25F61B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{28A96882-DC71-4DE8-9815-90F034E3D0EB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D02D485D-741F-4355-ADDF-02DBA7409EA9}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmailLabelCleanup.Data", "GmailLabelCleanup.Data\GmailLabelCleanup.Data.csproj", "{9467F810-57F8-4F32-AA0F-AF3E476B5CD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GMailLabelCleanup.Common", "GMailLabelCleanup.Common\GMailLabelCleanup.Common.csproj", "{2E9E79A1-122D-4934-AAD1-CEA0F0ADD8B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A637DEA-CA48-4CCB-B2DE-93437860BC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A637DEA-CA48-4CCB-B2DE-93437860BC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A637DEA-CA48-4CCB-B2DE-93437860BC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A637DEA-CA48-4CCB-B2DE-93437860BC7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0879B23D-AFF1-468F-B1EA-9FBAE25F61B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0879B23D-AFF1-468F-B1EA-9FBAE25F61B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0879B23D-AFF1-468F-B1EA-9FBAE25F61B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0879B23D-AFF1-468F-B1EA-9FBAE25F61B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9467F810-57F8-4F32-AA0F-AF3E476B5CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9467F810-57F8-4F32-AA0F-AF3E476B5CD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9467F810-57F8-4F32-AA0F-AF3E476B5CD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9467F810-57F8-4F32-AA0F-AF3E476B5CD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E9E79A1-122D-4934-AAD1-CEA0F0ADD8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E9E79A1-122D-4934-AAD1-CEA0F0ADD8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E9E79A1-122D-4934-AAD1-CEA0F0ADD8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E9E79A1-122D-4934-AAD1-CEA0F0ADD8B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0879B23D-AFF1-468F-B1EA-9FBAE25F61B6} = {28A96882-DC71-4DE8-9815-90F034E3D0EB}
+		{9467F810-57F8-4F32-AA0F-AF3E476B5CD8} = {28A96882-DC71-4DE8-9815-90F034E3D0EB}
+		{2E9E79A1-122D-4934-AAD1-CEA0F0ADD8B7} = {28A96882-DC71-4DE8-9815-90F034E3D0EB}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LARPInvaders", "LARPInvaders\LARPInvaders.vcxproj", "{6805800C-35F8-4013-92EB-837C692A4E7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4B8A9805-2B9D-4462-BCEF-B4B67BF4524D}"
+	ProjectSection(SolutionItems) = preProject
+		LARPInvaders\barn-beat.ogg = LARPInvaders\barn-beat.ogg
+		LARPInvaders\lightning.wav = LARPInvaders\lightning.wav
+		LARPInvaders\PTC55F.ttf = LARPInvaders\PTC55F.ttf
+		LARPInvaders\splat.wav = LARPInvaders\splat.wav
+		LARPInvaders\tile.png = LARPInvaders\tile.png
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6805800C-35F8-4013-92EB-837C692A4E7B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6805800C-35F8-4013-92EB-837C692A4E7B}.Debug|Win32.Build.0 = Debug|Win32
+		{6805800C-35F8-4013-92EB-837C692A4E7B}.Release|Win32.ActiveCfg = Release|Win32
+		{6805800C-35F8-4013-92EB-837C692A4E7B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

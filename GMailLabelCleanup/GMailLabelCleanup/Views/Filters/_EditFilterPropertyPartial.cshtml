@@ -1,0 +1,54 @@
+﻿@using GMailLabelCleanup.Core.Utilities
+@model GMailLabelCleanup.Core.ViewModels.Filters.EditPropertyViewModel
+<div class="col-lg-4">
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.Timestamp)
+    @Html.HiddenFor(model => model.Name)
+    @Html.HiddenFor(model => model.IsCheckType)
+    @Html.HiddenFor(model => model.IsSelectType)
+
+    <div class="col-filterProperty">
+        <div class="panel panel-default min180">
+            <div class="panel-heading">
+                @Model.Name
+            </div>
+            <div class="panel-body">
+                <div class="">
+                    <div class="checkbox">
+                        <label class="">
+                            @Html.CheckBoxFor(model => model.IsIncluded, new { @class = "IsIncluded" })
+                            Include
+                        </label>
+                    </div>
+                    <div class="">
+                        @if (Model.IsCheckType)
+                        {
+                            <div class="checkbox">
+                                <label class="">
+                                    @Html.CheckBoxFor(model => model.IsChecked, new { @class = "IsChecked" })
+                                    Yes
+                                </label>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.IsChecked, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Value)
+                        }
+                        else if (Model.IsSelectType)
+                        {
+                            @Html.DropDownListFor(model => model.SelectionId, Model.Selections, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SelectionId, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Value)
+                        }
+                        else
+                        {
+                            @Html.LabelFor(model => model.Value, new { @class = "control-label" })
+                            <div class="">
+                                @Html.TextBoxFor(model => model.Value, new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(model => model.Value, "", new { @class = "text-danger" })
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

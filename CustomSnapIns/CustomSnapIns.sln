@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingSnapIn", "ThreadingSnapIn\ThreadingSnapIn.csproj", "{7ABD1E12-DC77-486A-8939-93D19DCD89F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{B76BB50D-0429-4016-BB1B-39F9C1E42395}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.txt = ReadMe.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ABD1E12-DC77-486A-8939-93D19DCD89F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7ABD1E12-DC77-486A-8939-93D19DCD89F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7ABD1E12-DC77-486A-8939-93D19DCD89F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7ABD1E12-DC77-486A-8939-93D19DCD89F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

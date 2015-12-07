@@ -1,0 +1,17 @@
+﻿@model GMailLabelCleanup.Core.ViewModels.Manage.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <h5>Registered @Model.DateCreated.ToString("g")</h5>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Delete your account.</dt>
+        <dd>[ @Html.ActionLink("Do it", "DeleteAccount") ]</dd>
+    </dl>
+</div>

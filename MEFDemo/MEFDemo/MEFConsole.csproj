@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9B48319D-5C01-40C1-A88B-80E1B8841818}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MEFDemo</RootNamespace>
+    <AssemblyName>MEFDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MessageWriters\ConsoleMessageWriter.cs" />
+    <Compile Include="Programs\WriterBaronProgram.cs" />
+    <Compile Include="MessageWriters\MessageBoxWriter.cs" />
+    <Compile Include="Programs\MultiLazyMetaDataProgram.cs" />
+    <Compile Include="Programs\WinFormsProgram.cs" />
+    <Compile Include="Programs\PresentationTimerProgram.cs" />
+    <Compile Include="Programs\PresentationProgram.cs" />
+    <Compile Include="Programs\InstancesProgram.cs" />
+    <Compile Include="Programs\MultiLazyProgram.cs" />
+    <Compile Include="Programs\MultiProgram.cs" />
+    <Compile Include="MessageWriters\NonSharedConsoleWriter.cs" />
+    <Compile Include="Programs\SingleProgram.cs" />
+    <Compile Include="MessageWriters\DebugMessageWriter.cs" />
+    <Compile Include="Programs\SingleLazyProgram.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WriterBaron.cs" />
+    <Compile Include="WriterExportAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MEFInterfaces\MEFContracts.csproj">
+      <Project>{FF35F8AE-C6E0-41D2-ABF8-515A9E111803}</Project>
+      <Name>MEFContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEFPresentation\MEFPresentation.csproj">
+      <Project>{A94DFF78-4A11-45F8-A67A-397045AE2126}</Project>
+      <Name>MEFPresentation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MEFWinForms\MEFWinForms.csproj">
+      <Project>{EBB03F24-2A85-43DE-9AE5-22F368709036}</Project>
+      <Name>MEFWinForms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

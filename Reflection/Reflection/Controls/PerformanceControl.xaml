@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="Reflection.Controls.PerformanceControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:c="clr-namespace:Reflection.Controls"
+			 mc:Ignorable="d" 
+			 >
+    <UserControl.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical">
+        <c:PerformanceInfoControl DataContext="{Binding Native}" />
+        <Rectangle Height="1pt" Stroke="Black" Margin="0,2pt,0, 2pt" />
+        <c:PerformanceInfoControl DataContext="{Binding Reflections}" />
+        <Rectangle Height="1pt" Stroke="Black" Margin="0,2pt,0, 2pt" />
+        <c:PerformanceInfoControl DataContext="{Binding Lambdas}" />
+        <Rectangle Height="1pt" Stroke="Black" Margin="0,2pt,0, 2pt" />
+        <c:PerformanceInfoControl DataContext="{Binding Expressions}" />
+    </StackPanel>
+</UserControl>

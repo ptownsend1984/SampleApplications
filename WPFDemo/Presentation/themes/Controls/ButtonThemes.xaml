@@ -1,0 +1,333 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib"
+    xmlns:bev="clr-namespace:WPFDemo.Presentation.Behaviors" 
+    xmlns:b="clr-namespace:WPFDemo.Presentation.Controls.Button"  
+    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    xmlns:conv="clr-namespace:WPFDemo.Presentation.Converters"     
+    >
+
+    <ControlTemplate x:Key="AccessTextButtonControlTemplate" TargetType="b:AccessTextButton">
+        <theme:ButtonChrome Name="Chrome"
+						    Background="{TemplateBinding Background}"
+						    BorderBrush="{TemplateBinding BorderBrush}"
+						    RenderDefaulted="{TemplateBinding Button.IsDefaulted}"
+						    RenderMouseOver="{TemplateBinding IsMouseOver}"
+						    RenderPressed="{TemplateBinding IsPressed}"
+						    SnapsToDevicePixels="true">
+            <AccessText x:Name="AccessText" 
+                        Text="{TemplateBinding Content}"                        
+                        Margin="{TemplateBinding Padding}"
+                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                        TextWrapping="{TemplateBinding TextWrapping}"
+                        TextAlignment="{TemplateBinding TextAlignment}"
+                        TextTrimming="{TemplateBinding TextTrimming}"
+                        />
+        </theme:ButtonChrome>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter TargetName="Chrome" Property="RenderDefaulted" Value="true"/>
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                <Setter TargetName="Chrome" Property="RenderPressed" Value="true"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="b:AccessTextButton" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Template" Value="{StaticResource AccessTextButtonControlTemplate}" />
+    </Style>
+
+    <!-- When updating the ImageTextButton template, change both the default and the overlay template! -->
+    <ControlTemplate x:Key="OverlayImageTextButtonControlTemplate" TargetType="b:ImageTextButton">
+        <theme:ButtonChrome Name="Chrome"
+						    Background="{TemplateBinding Background}"
+						    BorderBrush="{TemplateBinding BorderBrush}"
+						    RenderDefaulted="{TemplateBinding Button.IsDefaulted}"
+						    RenderMouseOver="{TemplateBinding IsMouseOver}"
+						    RenderPressed="{TemplateBinding IsPressed}"
+						    SnapsToDevicePixels="true">
+            <Grid x:Name="Grid">
+                <Image x:Name="Image"
+                       Source="{TemplateBinding Image}"
+                       MaxWidth="{TemplateBinding ImageMaxWidth}"
+                       MaxHeight="{TemplateBinding ImageMaxHeight}"
+                       HorizontalAlignment="{TemplateBinding ImageHorizontalAlignment}"
+                       VerticalAlignment="{TemplateBinding ImageVerticalAlignment}"
+                       Margin="{TemplateBinding ImageMargin}"
+                       />
+                <ContentPresenter x:Name="ContentPresenter" 
+                                  Margin="{TemplateBinding Padding}"
+						          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+						          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+						          RecognizesAccessKey="True"
+						          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </Grid>
+        </theme:ButtonChrome>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter TargetName="Chrome" Property="RenderDefaulted" Value="true"/>
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                <Setter TargetName="Chrome" Property="RenderPressed" Value="true"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter TargetName="Image" Property="Opacity" Value="0.50" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="ImageTextButtonControlTemplate" TargetType="b:ImageTextButton">
+        <theme:ButtonChrome Name="Chrome"
+						    Background="{TemplateBinding Background}"
+						    BorderBrush="{TemplateBinding BorderBrush}"
+						    RenderDefaulted="{TemplateBinding Button.IsDefaulted}"
+						    RenderMouseOver="{TemplateBinding IsMouseOver}"
+						    RenderPressed="{TemplateBinding IsPressed}"
+						    SnapsToDevicePixels="true">
+            <DockPanel x:Name="Dock" 
+                       LastChildFill="True"
+                       >
+                <Image x:Name="Image"
+                       DockPanel.Dock="Left"
+                       Source="{TemplateBinding Image}"
+                       MaxWidth="{TemplateBinding ImageMaxWidth}"
+                       MaxHeight="{TemplateBinding ImageMaxHeight}"
+                       HorizontalAlignment="{TemplateBinding ImageHorizontalAlignment}"
+                       VerticalAlignment="{TemplateBinding ImageVerticalAlignment}"
+                       Margin="{TemplateBinding ImageMargin}"
+                       />
+                <ContentPresenter x:Name="ContentPresenter" 
+                                  Margin="{TemplateBinding Padding}"
+						          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+						          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+						          RecognizesAccessKey="True"
+						          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+            </DockPanel>
+        </theme:ButtonChrome>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsKeyboardFocused" Value="true">
+                <Setter TargetName="Chrome" Property="RenderDefaulted" Value="true"/>
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                <Setter TargetName="Chrome" Property="RenderPressed" Value="true"/>
+            </Trigger>
+            <Trigger Property="ImagePlacement" Value="Right">
+                <Setter TargetName="Image" Property="DockPanel.Dock" Value="Right" />
+            </Trigger>
+            <Trigger Property="ImagePlacement" Value="Top">
+                <Setter TargetName="Image" Property="DockPanel.Dock" Value="Top" />
+            </Trigger>
+            <Trigger Property="ImagePlacement" Value="Bottom">
+                <Setter TargetName="Image" Property="DockPanel.Dock" Value="Bottom" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter TargetName="Image" Property="Opacity" Value="0.50" />
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="b:ImageTextButton" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="ImagePlacement" Value="Left" />
+        <Setter Property="ImageMargin" Value="0" />
+        <Setter Property="ImageHorizontalAlignment" Value="Center" />
+        <Setter Property="ImageVerticalAlignment" Value="Center" />
+        <Setter Property="Template" Value="{StaticResource ImageTextButtonControlTemplate}" />
+        <Style.Triggers>
+            <Trigger Property="ImagePlacement" Value="Overlay">
+                <Setter Property="Template" Value="{StaticResource OverlayImageTextButtonControlTemplate}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type b:ImageButton}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate DataType="{x:Type b:ImageButton}">
+                    <Grid Name="DisplayGrid"
+                          >
+                        <Image Name="DisplayImage" 
+                               HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                               VerticalAlignment="{TemplateBinding VerticalAlignment}"      
+                               Source="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=Image}"
+                               />
+                        <TextBlock Name="TextOverlay" 
+                                   Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=TextOverlayVisibility}" 
+                                   Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=TextOverlay}" 
+                                   FontFamily="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=FontFamily}"
+                                   FontSize="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=FontSize}"
+                                   FontStretch="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=FontStretch}"
+                                   FontStyle="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=FontStyle}"
+                                   FontWeight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=FontWeight}"                                   
+                                   Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=Foreground}"
+                                   Background="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=Background}"
+                                   HorizontalAlignment="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=TextOverlayHorizontalAlignment}"
+                                   VerticalAlignment="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=TextOverlayVerticalAlignment}"
+                                   />
+                    </Grid>
+                    <DataTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="DisplayImage" Property="BitmapEffect" 
+                                    Value="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageButton}}, Path=MouseOverEffect}">
+                            </Setter>
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type b:ImageButton}, AncestorLevel=1}, Path=IsEnabled}" Value="False">
+                            <Setter Property="Opacity" Value="0.50"></Setter>
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:ImageButton}">
+                    <ContentPresenter 
+                        Margin="{TemplateBinding Control.Padding}" 
+                        HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                        VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                        SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" 
+                        RecognizesAccessKey="True" 
+                        />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type b:ImageRadioButton}">
+        <Setter Property="IsCheckedDisplayMode" Value="IsCheckedBackground" />
+        <Setter Property="IsCheckedBackground" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+        <Setter Property="ContentLocation" Value="Bottom" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="ImageHorizontalAlignment" Value="Center" />
+        <Setter Property="ImageVerticalAlignment" Value="Stretch" />
+
+        <!-- Make background explicitly transparent so the whole area is clickable -->
+        <Setter Property="Background" Value="Transparent" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type b:ImageRadioButton}">
+                    <Grid x:Name="Grid"
+                          Background="{TemplateBinding Background}"
+                               >
+                        <Grid.RowDefinitions>
+                            <RowDefinition x:Name="r0" />
+                            <RowDefinition x:Name="r1" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="c0" />
+                            <ColumnDefinition x:Name="c1" />
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="Image" 
+                               Source="{TemplateBinding Image}"
+                               MaxWidth="{TemplateBinding ImageMaxWidth}"
+                               MaxHeight="{TemplateBinding ImageMaxHeight}"
+                               Margin="{TemplateBinding ImageMargin}"
+                               HorizontalAlignment="{TemplateBinding ImageHorizontalAlignment}"
+                               VerticalAlignment="{TemplateBinding ImageVerticalAlignment}"
+                                              />
+                        <ContentPresenter x:Name="Content" 
+                                      Margin="{TemplateBinding Control.Padding}" 
+                                      HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                                      VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                                      SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" 
+                                          RecognizesAccessKey="True" 
+                                          />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                        <Trigger SourceName="Image" Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Image" Property="BitmapEffect" 
+                                    Value="{Binding MouseOverEffect, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageRadioButton}}}" 
+                                    />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                            <Setter TargetName="Image" Property="Opacity" Value="0.5" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="IsCheckedDisplayMode" Value="IsCheckedBackground" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Background" Value="{Binding IsCheckedBackground, RelativeSource={RelativeSource Self}}" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="IsCheckedDisplayMode" Value="IsCheckedImage" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter TargetName="Image" Property="Source" 
+                                        Value="{Binding IsCheckedImage, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type b:ImageRadioButton}}}"
+                                        />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+                        <Trigger Property="ContentLocation" Value="Overlay">
+                            <Setter TargetName="r0" Property="Height" Value="*" />
+                            <Setter TargetName="r1" Property="Height" Value="Auto" />
+                            <Setter TargetName="c0" Property="Width" Value="*" />
+                            <Setter TargetName="c1" Property="Width" Value="Auto" />
+                            <Setter TargetName="Image" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Image" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                        </Trigger>
+                        <Trigger Property="ContentLocation" Value="Top">
+                            <Setter TargetName="r0" Property="Height" Value="Auto" />
+                            <Setter TargetName="r1" Property="Height" Value="*" />
+                            <Setter TargetName="c0" Property="Width" Value="*" />
+                            <Setter TargetName="c1" Property="Width" Value="Auto" />
+                            <Setter TargetName="Image" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Image" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                        </Trigger>
+                        <Trigger Property="ContentLocation" Value="Bottom">
+                            <Setter TargetName="r0" Property="Height" Value="*" />
+                            <Setter TargetName="r1" Property="Height" Value="Auto" />
+                            <Setter TargetName="c0" Property="Width" Value="*" />
+                            <Setter TargetName="c1" Property="Width" Value="Auto" />
+                            <Setter TargetName="Image" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Image" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Row" Value="1" />
+                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                        </Trigger>
+                        <Trigger Property="ContentLocation" Value="Left">
+                            <Setter TargetName="r0" Property="Height" Value="*" />
+                            <Setter TargetName="r1" Property="Height" Value="Auto" />
+                            <Setter TargetName="c0" Property="Width" Value="Auto" />
+                            <Setter TargetName="c1" Property="Width" Value="*" />
+                            <Setter TargetName="Image" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Image" Property="Grid.Column" Value="1" />
+                            <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Column" Value="0" />
+                        </Trigger>
+                        <Trigger Property="ContentLocation" Value="Right">
+                            <Setter TargetName="r0" Property="Height" Value="*" />
+                            <Setter TargetName="r1" Property="Height" Value="Auto" />
+                            <Setter TargetName="c0" Property="Width" Value="*" />
+                            <Setter TargetName="c1" Property="Width" Value="Auto" />
+                            <Setter TargetName="Image" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Image" Property="Grid.Column" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Row" Value="0" />
+                            <Setter TargetName="Content" Property="Grid.Column" Value="1" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
+

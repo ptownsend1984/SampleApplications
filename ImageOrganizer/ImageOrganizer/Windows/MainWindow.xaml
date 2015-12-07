@@ -1,0 +1,296 @@
+﻿<r:RibbonWindow x:Class="ImageOrganizer.Windows.MainWindow"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+                xmlns:pg="clr-namespace:ImageOrganizer.Presentation.Gestures;assembly=ImageOrganizer.Presentation"
+                xmlns:pc="clr-namespace:ImageOrganizer.Presentation.Controls.Common;assembly=ImageOrganizer.Presentation"
+                xmlns:bev="clr-namespace:ImageOrganizer.Presentation.Behaviors;assembly=ImageOrganizer.Presentation"
+                xmlns:conv="clr-namespace:ImageOrganizer.Presentation.Converters;assembly=ImageOrganizer.Presentation"
+                xmlns:prop="clr-namespace:ImageOrganizer.Properties"
+                Title="Image Organizer"
+		        Width="{Binding Source={x:Static prop:Settings.Default}, Path=MainWindowWidth, Mode=TwoWay}"
+                Height="{Binding Source={x:Static prop:Settings.Default}, Path=MainWindowHeight, Mode=TwoWay}" 
+		        Left="{Binding Source={x:Static prop:Settings.Default}, Path=MainWindowLeft, Mode=TwoWay}"
+                Top="{Binding Source={x:Static prop:Settings.Default}, Path=MainWindowTop, Mode=TwoWay}"     
+                MinWidth="640" 
+                MinHeight="480"
+                bev:WindowExtensions.PreventOffWorkingArea="True"
+                >
+    <r:RibbonWindow.Icon>
+        <BitmapImage UriSource="/ImageOrganizer.Resources;component/Images/image.png" />
+    </r:RibbonWindow.Icon>
+    <r:RibbonWindow.Resources>
+        <ResourceDictionary>
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <conv:FileSizeConverter x:Key="FileSizeConverter" />
+            <conv:ZoomConverter x:Key="ZoomConverter" />
+            <conv:RoundConverter x:Key="RoundConverter" />
+            <pg:MouseWheelGesture x:Key="MouseWheelGesture" />
+        </ResourceDictionary>
+    </r:RibbonWindow.Resources>
+    <r:RibbonWindow.InputBindings>
+        <KeyBinding Command="{Binding BrowseFolderCommand}" 
+                    Gesture="CTRL+O" 
+                    />
+        <KeyBinding Command="{Binding CloseFolderCommand}" 
+                    Gesture="CTRL+W" 
+                    />
+        <KeyBinding Command="{Binding GotoFirstFileCommand}" 
+                    Gesture="Home" 
+                    />
+        <KeyBinding Command="{Binding GotoPreviousFileCommand}" 
+                    Gesture="PageUp" 
+                    />
+        <KeyBinding Command="{Binding GotoNextFileCommand}" 
+                    Gesture="PageDown" 
+                    />
+        <KeyBinding Command="{Binding GotoLastFileCommand}" 
+                    Gesture="End" 
+                    />
+        <KeyBinding Command="{Binding GotoImageNameCommand}"
+                    Gesture="CTRL+G"
+                    />
+        <KeyBinding Command="{Binding RenameActiveImageCommand}" 
+                    Gesture="F2" 
+                    />
+        <KeyBinding Command="{Binding RefreshActiveImageCommand}" 
+                    Gesture="F5" 
+                    />
+        <KeyBinding Command="{Binding DeleteActiveImageCommand}"
+                    Gesture="Delete"
+                    />
+        <KeyBinding Command="{Binding ZoomInCommand}"
+                    Gesture="CTRL+OemPlus"
+                    />
+        <KeyBinding Command="{Binding ZoomOutCommand}"
+                    Gesture="CTRL+OemMinus"
+                    />        
+        <KeyBinding Command="{Binding ZoomFitCommand}"
+                    Gesture="CTRL+0"
+                    />
+        <MouseBinding Command="{Binding DataContext.ZoomInCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type r:RibbonWindow}}}" 
+                      Gesture="{x:Static pg:MouseWheelGesture.CtrlUp}"
+                      />
+        <MouseBinding Command="{Binding DataContext.ZoomOutCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type r:RibbonWindow}}}"
+                      Gesture="{x:Static pg:MouseWheelGesture.CtrlDown}"
+                      />
+    </r:RibbonWindow.InputBindings>
+	<Grid>        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <r:Ribbon x:Name="_Ribbon"
+                  >
+            <r:Ribbon.ApplicationMenu>
+                <r:RibbonApplicationMenu SmallImageSource="/ImageOrganizer.Resources;component/Images/application.png" 
+                                         KeyTip="F"
+                                         >
+                    <r:RibbonApplicationMenuItem Header="Open"  
+                                                 Command="{Binding BrowseFolderCommand}"
+                                                 ImageSource="/ImageOrganizer.Resources;component/Images/folder.png"
+                                                 ToolTip="Browse images in a directory (CTRL+O)"                                                 
+                                                 KeyTip="O"
+                                                 />
+                    <r:RibbonApplicationMenuItem Header="About"  
+                                                 Command="{Binding AboutCommand}"
+                                                 ImageSource="/ImageOrganizer.Resources;component/Images/award_star_bronze_3.png"
+                                                 ToolTip="About the application"
+                                                 KeyTip="A"
+                                                 />
+                    <r:RibbonApplicationMenuItem Header="Exit"  
+                                                 Command="Close"
+                                                 ImageSource="/ImageOrganizer.Resources;component/Images/door_out.png"
+                                                 ToolTip="Exit application"
+                                                 KeyTip="X"
+                                                 />
+                </r:RibbonApplicationMenu>
+            </r:Ribbon.ApplicationMenu>
+            <r:RibbonTab Header="Home"
+                         KeyTip="H"
+                         IsSelected="True"
+                         >
+                <r:RibbonGroup Header="Browse"
+                               >
+                    <r:RibbonButton Label="Open" 
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/folder.png"
+                                    ToolTip="Browse images in a directory (CTRL+O)"                                         
+                                    KeyTip="O"
+                                    Command="{Binding BrowseFolderCommand}"
+                                    />
+                    <r:RibbonButton Label="Close" 
+                                    SmallImageSource="/ImageOrganizer.Resources;component/Images/stop.png"
+                                    ToolTip="Close folder (CTRL+W)"                                         
+                                    KeyTip="CL"
+                                    Command="{Binding CloseFolderCommand}"
+                                    />
+                    <r:RibbonButton Label="First" KeyTip="F" 
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/resultset_first.png"
+                                    Command="{Binding GotoFirstFileCommand}"      
+                                    ToolTip="First image (Home)"
+                                    />
+                    <r:RibbonButton Label="Previous" KeyTip="P" 
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/resultset_previous.png"
+                                    Command="{Binding GotoPreviousFileCommand}"
+                                    ToolTip="Previous image (Page Up)"
+                                    >
+                    </r:RibbonButton>
+                    <r:RibbonButton Label="Next" KeyTip="N" 
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/resultset_next.png"
+                                    Command="{Binding GotoNextFileCommand}"
+                                    ToolTip="Next image (Page Down)"
+                                   />
+                    <r:RibbonButton Label="Last" KeyTip="L" 
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/resultset_last.png"
+                                    Command="{Binding GotoLastFileCommand}"
+                                    ToolTip="Last image (End)"
+                                    />
+                    <r:RibbonButton Label="Go To Image" KeyTip="G" 
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/hand_point.png"
+                                    Command="{Binding GotoImageNameCommand}"
+                                    ToolTip="Go to image by its name (CTRL+G)"
+                                    />
+                </r:RibbonGroup>
+                <!--<r:RibbonGroup Header="Clipboard"
+                               >
+                    <r:RibbonButton Label="Copy" KeyTip="C"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/page_copy.png"
+                                    />
+                </r:RibbonGroup>-->
+            </r:RibbonTab>
+            <r:RibbonTab Header="Image"
+                         KeyTip="I"
+                         >
+                <r:RibbonGroup Header="File"
+                               >
+                    <r:RibbonButton Label="Rename" KeyTip="RE"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/textfield_rename.png"
+                                    Command="{Binding RenameActiveImageCommand}" 
+                                    ToolTip="Rename the active image (F2)"
+                                    />
+                    <!--<r:RibbonButton Label="Copy" KeyTip="C"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/page_copy.png"
+                                    IsEnabled="False"
+                                    />
+                    <r:RibbonButton Label="Move" KeyTip="M"
+                                    SmallImageSource="/ImageOrganizer.Resources;component/Images/move_to_folder.png"
+                                    IsEnabled="False"
+                                    />-->
+                    <r:RibbonButton Label="Delete" KeyTip="D"
+                                    SmallImageSource="/ImageOrganizer.Resources;component/Images/bin_closed.png"
+                                    Command="{Binding DeleteActiveImageCommand}"
+                                    ToolTip="Delete the active image (DEL)"
+                                    />
+                </r:RibbonGroup>
+                <!--<r:RibbonGroup Header="Dimensions" 
+                               >
+                    <r:RibbonButton Label="Resize" KeyTip="RZ"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/resize_picture.png"
+                                    />
+                </r:RibbonGroup>-->
+            </r:RibbonTab>
+            <r:RibbonTab Header="View"
+                         KeyTip="V"
+                         >
+                <r:RibbonGroup Header="Zoom">
+                    <r:RibbonButton Label="Zoom in" KeyTip="I"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/zoom_in.png"
+                                    Command="{Binding ZoomInCommand}"
+                                    />
+                    <r:RibbonButton Label="Zoom out" KeyTip="O"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/zoom_out.png"
+                                    Command="{Binding ZoomOutCommand}"
+                                    />
+                    <r:RibbonButton Label="Actual Size" KeyTip="M"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/zoom.png"
+                                    Command="{Binding ActualSizeCommand}"
+                                    />
+                    <r:RibbonButton Label="Zoom to Best Fit" KeyTip="B"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/arrow_inout.png"
+                                    Command="{Binding ZoomFitCommand}"
+                                    />
+                </r:RibbonGroup>
+                <!--<r:RibbonGroup Header="Display"
+                               >
+                    <r:RibbonButton Label="Full screen" KeyTip="F"
+                                    LargeImageSource="/ImageOrganizer.Resources;component/Images/zoom_extend.png"
+                                    />
+                </r:RibbonGroup>-->
+            </r:RibbonTab>
+        </r:Ribbon> 
+        <Grid Grid.Row="1"
+              DataContext="{Binding ActiveImagesViewModel}"
+              Background="LightGray"
+              KeyboardNavigation.IsTabStop="False"
+              bev:ControlExtensions.BubbleMouseWheel="True"
+              bev:ControlExtensions.BubbleMouseWheelRequireControl="True"
+              >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="0" Padding="0pt"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          bev:ControlExtensions.IsControlSizeBound="True"
+                          bev:ControlExtensions.OneWayControlWidth="{Binding ViewerWidth}"
+                          bev:ControlExtensions.OneWayControlHeight="{Binding ViewerHeight}"
+                          KeyboardNavigation.IsTabStop="False"
+                          Focusable="False"                          
+                          >
+                <Image Source="{Binding ActiveImage.Source}"
+                       Width="{Binding ActiveImage.PixelWidth}"
+                       Height="{Binding ActiveImage.PixelHeight}"                       
+                       Stretch="Fill"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       KeyboardNavigation.IsTabStop="False"
+                       Focusable="False"
+                       />
+            </ScrollViewer>
+            <StatusBar Grid.Row="1"
+                       Visibility="{Binding IsViewingFiles, Converter={StaticResource BooleanToVisibilityConverter}}"
+                       >                
+                <StatusBarItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Viewbox Width="16" Height="16" Margin="0,0,5pt,0"
+                                 Visibility="{Binding IsLoadingFiles, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                 KeyboardNavigation.IsTabStop="False"
+                                 >
+                            <pc:CircularProgressBar />
+                        </Viewbox>
+                        <TextBlock>
+                            <TextBlock Text="{Binding DisplayPosition}" />
+                            <TextBlock Text="/" />
+                            <TextBlock Text="{Binding ActiveFiles.Count}" />
+                        </TextBlock>
+                    </StackPanel>
+                </StatusBarItem>
+                <Separator />
+                <StatusBarItem>
+                    <TextBlock Text="{Binding ActiveImage.FileInfo.Name}" 
+                               ToolTip="{Binding ActiveImage.FileInfo.FullName}"
+                               />
+                </StatusBarItem>
+                <Separator />
+                <StatusBarItem>
+                    <TextBlock Text="{Binding ActiveImage.FileInfo.Length, Converter={StaticResource FileSizeConverter}}" />
+                </StatusBarItem>
+                <Separator />
+                <StatusBarItem>
+                    <TextBlock>
+                        <TextBlock Text="{Binding ActiveImage.OriginalPixelWidth}" />
+                        <TextBlock Text="x" />
+                        <TextBlock Text="{Binding ActiveImage.OriginalPixelHeight}" />
+                        <TextBlock Text="," />
+                        <TextBlock Text="{Binding ActiveImage.AspectRatio, Converter={StaticResource RoundConverter}}" />
+                    </TextBlock>
+                </StatusBarItem>
+                <Separator />
+                <StatusBarItem>
+                    <TextBlock Text="{Binding ActiveImage.Zoom, Converter={StaticResource ZoomConverter}}" />
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+    </Grid>
+</r:RibbonWindow>

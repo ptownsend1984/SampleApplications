@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="XAMLMagicks.UserControls.BarSelectorDemoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lst="clr-namespace:XAMLMagicks.Controls.ListBox"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="LinearGradientBarSelectorStyle" TargetType="{x:Type lst:BarSelector}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0">
+                        <LinearGradientBrush.GradientStops>
+                            <GradientStop Color="Green" Offset="0" />
+                            <GradientStop Color="Yellow" Offset=".33" />
+                            <GradientStop Color="Orange" Offset=".67" />
+                            <GradientStop Color="Red" Offset="1" />
+                        </LinearGradientBrush.GradientStops>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="LinearGradientBarSelectorItemStyle" TargetType="{x:Type lst:BarSelectorItem}">
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="1pt" />
+            <Setter Property="NotHighlightedBrush" Value="White" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type lst:BarSelectorItem}">
+                        <Border BorderThickness="{TemplateBinding Border.BorderThickness}" 
+                                    Padding="{TemplateBinding Control.Padding}" 
+                                    BorderBrush="{TemplateBinding Border.BorderBrush}" 
+                                    Background="{TemplateBinding Panel.Background}" 
+                                    Name="Bd" SnapsToDevicePixels="True">
+                            <Rectangle Fill="{TemplateBinding Panel.Background}"
+                                           SnapsToDevicePixels="True"
+                                           Width="60"
+                                           />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="HighlightedBrush" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+                                <Setter Property="NotHighlightedBrush" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="A reconstituted list box, the Bar Selector control.  Item backgrounds are changed based on the selected item." TextWrapping="Wrap" />
+            <lst:BarSelector ItemsSource="{Binding SelectableItems}" IsSynchronizedWithCurrentItem="True" 
+                             HorizontalAlignment="Left" VerticalAlignment="Stretch"
+                             Height="100"
+                             />
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="A Bar Selector with a linear gradient background." TextWrapping="Wrap" />
+            <lst:BarSelector ItemsSource="{Binding SelectableItems}" IsSynchronizedWithCurrentItem="True" 
+                             HorizontalAlignment="Left" VerticalAlignment="Stretch"                              
+                             Height="100"
+                             Style="{StaticResource LinearGradientBarSelectorStyle}"
+                             ItemContainerStyle="{StaticResource LinearGradientBarSelectorItemStyle}"
+                             />
+        </StackPanel>
+    </Grid>
+</UserControl>

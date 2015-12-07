@@ -1,0 +1,46 @@
+﻿@model GMailLabelCleanup.Core.ViewModels.Filters.DeleteAllConfirmViewModel
+@{
+    ViewBag.Title = "Filters";
+
+    var totalCount = Model.Count;
+}
+
+<h2>Delete all filters</h2>
+@if (totalCount > 0)
+{
+    if (totalCount != 1)
+    {
+        <h4>Are you sure you want to delete your @totalCount.ToString() saved filters?</h4>
+    }
+    else
+    {
+        <h4>Are you sure you want to delete your saved filter?</h4>
+    }
+}
+else
+{
+    <h4>You don't have any filters to delete.</h4>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.HiddenFor(model => model.Count)
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @if (totalCount > 0)
+                {
+                    <input type="submit" name="deleteAll" value="Yes" class="btn btn-danger" />
+                    <input type="submit" name="deleteAll" value="No" class="btn btn-default" />
+                }
+                else
+                {
+                    <input type="submit" name="deleteAll" value="Return" class="btn btn-default" />
+                }
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,218 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:s="clr-namespace:System;assembly=mscorlib"
+    xmlns:lst="clr-namespace:XAMLMagicks.Controls.ListBox"
+    xmlns:mwt="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    xmlns:bev="clr-namespace:XAMLMagicks.Behaviors"
+    >
+    <Style TargetType="{x:Type lst:BarSelector}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden" />
+        <Setter Property="bev:ControlExtensions.BubbleMouseWheel" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" IsItemsHost="True" Background="Transparent" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type lst:BarSelector}">
+                    <ScrollViewer Padding="{TemplateBinding Control.Padding}" 
+                                  Focusable="False"
+                                  Background="{TemplateBinding Panel.Background}"
+                                  >
+                        <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"                                         
+                                        />
+                    </ScrollViewer>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type lst:BarSelectorItem}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="HighlightedBrush" Value="Transparent" />
+        <Setter Property="NotHighlightedBrush" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type lst:BarSelectorItem}">
+                    <Border BorderThickness="{TemplateBinding Border.BorderThickness}" 
+                            Padding="{TemplateBinding Control.Padding}" 
+                            BorderBrush="{TemplateBinding Border.BorderBrush}" 
+                            Background="{TemplateBinding Panel.Background}" 
+                            Name="Bd" SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}">
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}" 
+                                      ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                                      ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                                      HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                                      VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                                      SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" 
+                                      />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="HighlightedBrush" Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+                            <Setter Property="NotHighlightedBrush" Value="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Cursor" Value="Hand" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle Stroke="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" StrokeDashArray="1 2" StrokeThickness="1pt" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="CheckedListBoxItemCheckBox" TargetType="{x:Type CheckBox}">
+        <Setter Property="Margin" Value="2pt,0,2pt,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Panel.Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <BulletDecorator Background="#00FFFFFF" SnapsToDevicePixels="True">
+                        <BulletDecorator.Bullet>
+                            <mwt:BulletChrome Background="{TemplateBinding Panel.Background}" 
+                                                                          BorderBrush="{TemplateBinding Border.BorderBrush}" 
+                                                                          RenderMouseOver="{TemplateBinding UIElement.IsMouseOver}" 
+                                                                          RenderPressed="{TemplateBinding ButtonBase.IsPressed}" 
+                                                                          IsChecked="{TemplateBinding ToggleButton.IsChecked}" 
+                                                                          />
+                        </BulletDecorator.Bullet>
+                        <Grid Background="{TemplateBinding Panel.Background}" >
+                            <ContentPresenter RecognizesAccessKey="True" 
+                                                                      Content="{TemplateBinding ContentControl.Content}" 
+                                                                      ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                                                                      ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                                                                      Margin="{TemplateBinding Control.Padding}" 
+                                                                      HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                                                                      VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                                                                      SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" 
+                                                                      />
+                        </Grid>
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="ContentControl.HasContent" Value="True">
+                            <Setter Property="Control.Padding" Value="4,0,0,0" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsEnabled">
+                            <Setter Property="TextElement.Foreground">
+                                <Setter.Value>
+                                    <DynamicResource ResourceKey="{x:Static SystemColors.GrayTextBrushKey}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Trigger.Value>
+                                <s:Boolean>False</s:Boolean>
+                            </Trigger.Value>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Panel.Background">
+                                <Setter.Value>
+                                    <DynamicResource ResourceKey="{x:Static SystemColors.HighlightBrushKey}" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="TextElement.Foreground">
+                                <Setter.Value>
+                                    <DynamicResource ResourceKey="{x:Static SystemColors.HighlightTextBrushKey}" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type lst:CheckedListBoxItem}">
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border BorderThickness="0"
+                            >
+                        <CheckBox x:Name="PART_CheckBox"
+                                  Grid.Column="0"
+                                  IsChecked="{Binding IsSelected}"
+                                  Content="{Binding DisplayName}"
+                                  Style="{StaticResource CheckedListBoxItemCheckBox}"
+                                  />
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type lst:CheckedListBoxItem}">
+                    <Border BorderThickness="{TemplateBinding Border.BorderThickness}" 
+                            Padding="{TemplateBinding Control.Padding}" 
+                            BorderBrush="{TemplateBinding Border.BorderBrush}" 
+                            Background="{TemplateBinding Panel.Background}" 
+                            Name="Bd" 
+                            SnapsToDevicePixels="True"
+                            >
+                        <ContentPresenter Content="{TemplateBinding ContentControl.Content}" 
+                                          ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                                          ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                                          HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" 
+                                          KeyboardNavigation.IsTabStop="False"
+                                          />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="UIElement.IsEnabled" Value="False">
+                            <Setter Property="TextElement.Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="{x:Type lst:CheckedListBox}">
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" />
+        <Setter Property="BorderThickness" Value="1pt" />
+        <Setter Property="Panel.Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type lst:CheckedListBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            >
+                        <ScrollViewer Padding="{TemplateBinding Padding}" 
+                                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
+                                      >
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                            />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>
+

@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A4E6BFD1-E773-451B-B9C4-B712F4E72BC0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>XAMLMagicks</RootNamespace>
+    <AssemblyName>XAMLMagicks</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Behaviors\ControlExtensions.cs" />
+    <Compile Include="Behaviors\KeyboardExtensions.cs" />
+    <Compile Include="Behaviors\MouseExtensions.cs" />
+    <Compile Include="Behaviors\Navigation.cs" />
+    <Compile Include="Controls\Button\ImageButton.cs" />
+    <Compile Include="Controls\Button\ImageRadioButton.cs" />
+    <Compile Include="Controls\CheckBox\CatCheckBox.cs" />
+    <Compile Include="Controls\ListBox\BarSelector.cs" />
+    <Compile Include="Controls\ListBox\BarSelectorItem.cs" />
+    <Compile Include="Controls\ListBox\CheckedListBox.cs" />
+    <Compile Include="Controls\ListBox\CheckedListBoxItem.cs" />
+    <Compile Include="Controls\Spinner\ButtonSpinner.cs" />
+    <Compile Include="Controls\Spinner\SpinnerBase.cs" />
+    <Compile Include="Controls\TextBox\DecimalTextBox.cs" />
+    <Compile Include="Controls\TextBox\IntegerTextBox.cs" />
+    <Compile Include="Controls\UpDown\IntegerUpDown.cs" />
+    <Compile Include="Controls\UpDown\NumericUpDownBase.Generic.cs" />
+    <Compile Include="Controls\UpDown\UpDownBase.cs" />
+    <Compile Include="Converters\BooleanToWaitCursorConverter.cs" />
+    <Compile Include="Converters\ByteArrayImageSourceConverter.cs" />
+    <Compile Include="Converters\CurrencyStringConverter.cs" />
+    <Compile Include="Converters\DateTimeStringConverter.cs" />
+    <Compile Include="Converters\IntegerStringConverter.cs" />
+    <Compile Include="DelegateCommand.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Forms\DemoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormElementHost.cs" />
+    <Compile Include="Forms\FormOwnerHelper.cs" />
+    <Compile Include="Forms\TabStopPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="NotificationObject.cs" />
+    <Compile Include="Models\SelectableItem.cs" />
+    <Compile Include="themes\ThemeAttributes.cs" />
+    <Compile Include="UserControls\BarSelectorDemoControl.xaml.cs">
+      <DependentUpon>BarSelectorDemoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BehaviorsDemoUserControl.xaml.cs">
+      <DependentUpon>BehaviorsDemoUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CheckedListBoxDemoControl.xaml.cs">
+      <DependentUpon>CheckedListBoxDemoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ControlStylesDemoControl.xaml.cs">
+      <DependentUpon>ControlStylesDemoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ConvertersDemoControl.xaml.cs">
+      <DependentUpon>ConvertersDemoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomExpanderTemplateControl.xaml.cs">
+      <DependentUpon>CustomExpanderTemplateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DateTimePickerHost.xaml.cs">
+      <DependentUpon>DateTimePickerHost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\IntroductionControl.xaml.cs">
+      <DependentUpon>IntroductionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ContentPresenterDemo.xaml.cs">
+      <DependentUpon>ContentPresenterDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SimpleCustomControlsControl.xaml.cs">
+      <DependentUpon>SimpleCustomControlsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SimpleThemedControlsControl.xaml.cs">
+      <DependentUpon>SimpleThemedControlsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TextBlockUserControl.xaml.cs">
+      <DependentUpon>TextBlockUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UpDownDemoControl.xaml.cs">
+      <DependentUpon>UpDownDemoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HostedWinFormsDemoControl.xaml.cs">
+      <DependentUpon>HostedWinFormsDemoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WinFormsDemoControl.xaml.cs">
+      <DependentUpon>WinFormsDemoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BarSelectorDemoViewModel.cs" />
+    <Compile Include="ViewModels\CheckedListBoxDemoViewModel.cs" />
+    <Compile Include="ViewModels\UpDownDemoViewModel.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Storyboards.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\ButtonThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\CheckBoxThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\ListBoxThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\SpinnerThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\UpDownThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BarSelectorDemoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BehaviorsDemoUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CheckedListBoxDemoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ControlStylesDemoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ConvertersDemoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CustomExpanderTemplateControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DateTimePickerHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\IntroductionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ContentPresenterDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SimpleCustomControlsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SimpleThemedControlsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TextBlockUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UpDownDemoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\HostedWinFormsDemoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WinFormsDemoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\carrotCat.jpg" />
+    <Resource Include="Resources\LimeHelmetCat.jpg" />
+    <Resource Include="Resources\watermelonCat.jpg" />
+    <Resource Include="Resources\YellowCat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\relevantCat.jpg.data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UnhappyCat.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HappyCat_64.png" />
+    <Resource Include="Resources\HappyCat_64_DIS.png" />
+    <Resource Include="Resources\HappyCat_64_HOT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CatCouch.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Catface.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

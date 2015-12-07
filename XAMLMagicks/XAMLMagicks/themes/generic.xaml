@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/XAMLMagicks;component/themes/ButtonThemes.xaml" />
+        <ResourceDictionary Source="/XAMLMagicks;component/themes/CheckBoxThemes.xaml" />
+        <ResourceDictionary Source="/XAMLMagicks;component/themes/ListBoxThemes.xaml" />
+        <ResourceDictionary Source="/XAMLMagicks;component/themes/SpinnerThemes.xaml" />
+        <ResourceDictionary Source="/XAMLMagicks;component/themes/UpDownThemes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>
+

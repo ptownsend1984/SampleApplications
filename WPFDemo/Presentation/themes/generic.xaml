@@ -1,0 +1,11 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/WPFDemo.Presentation;component/themes/Controls/ButtonThemes.xaml" />
+        <ResourceDictionary Source="/WPFDemo.Presentation;component/themes/Controls/CheckBoxThemes.xaml" />
+        <ResourceDictionary Source="/WPFDemo.Presentation;component/themes/Controls/ListBoxThemes.xaml" />
+        <ResourceDictionary Source="/WPFDemo.Presentation;component/themes/Controls/SpinnerThemes.xaml" />
+        <ResourceDictionary Source="/WPFDemo.Presentation;component/themes/Controls/UpDownThemes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

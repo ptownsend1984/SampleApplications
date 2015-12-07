@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="XAMLMagicks.UserControls.WinFormsDemoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:pf="clr-namespace:XAMLMagicks.Forms"
+             xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             xmlns:u="clr-namespace:XAMLMagicks.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="This is a WinForms button." TextWrapping="Wrap" />
+            <WindowsFormsHost>
+                <pf:TabStopPanel AutoSize="True" AutoSizeMode="GrowAndShrink"                                 
+                                 >
+                    <pf:TabStopPanel.Controls>
+                        <wf:Button Text="Click me" Width="75" Height="23" Click="Button_Click" 
+                                   UseVisualStyleBackColor="True"
+                                   />
+                    </pf:TabStopPanel.Controls>
+                </pf:TabStopPanel>
+            </WindowsFormsHost>
+            <TextBlock Text="When the below button is WinForms hosting WPF, the tab order will get stuck." TextWrapping="Wrap" />
+            <WindowsFormsHost>
+                <wf:Button Text="Click me" Width="75" Height="23" Click="Button_Click" 
+                                   UseVisualStyleBackColor="True"
+                                   />
+            </WindowsFormsHost>
+            <TextBlock Text="This is a XAML wrapper around a WinForms date time picker." TextWrapping="Wrap" />
+            <u:DateTimePickerHost Width="200" Height="23" 
+                                  Format="Custom"
+                                  CustomFormat="{Binding Text, ElementName=DateTimePickerFormatComboBox}"
+                                  ShowCheckBox="{Binding IsChecked, ElementName=ShowDateTimePickerCheckBoxCheckBox}"
+                                  Checked="{Binding IsChecked, ElementName=CheckedDateTimePickerCheckBoxCheckBox}"
+                                  />
+            <ComboBox Width="120" x:Name="DateTimePickerFormatComboBox"                      
+                      >
+                <ComboBoxItem Content="yyyy-mm-dd hh:MM:ss t" IsSelected="True" />
+                <ComboBoxItem Content="m-d-y"  />
+                <ComboBoxItem Content="hh:MM:ss" />
+            </ComboBox>
+            <CheckBox x:Name="ShowDateTimePickerCheckBoxCheckBox" Content="Show date time picker check box" IsChecked="True" />
+            <CheckBox x:Name="CheckedDateTimePickerCheckBoxCheckBox" Content="Date time picker check box is checked" IsChecked="True" />
+            <TextBlock Text="This one edits time." TextWrapping="Wrap" />
+            <u:DateTimePickerHost Width="200" Height="23" 
+                                  Format="Time" ShowUpDown="True"
+                                  />
+        </StackPanel>
+    </Grid>
+</UserControl>

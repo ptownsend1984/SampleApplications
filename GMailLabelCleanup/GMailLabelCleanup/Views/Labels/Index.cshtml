@@ -1,0 +1,111 @@
+﻿@model GMailLabelCleanup.Core.ViewModels.Labels.IndexViewModel
+@{
+    ViewBag.Title = "Index";
+
+    var totalCount = @Model.Labels.Count;
+}
+
+<h2>Labels</h2>
+<h4>@Html.ActionLink("Create new label", "Create")</h4>
+
+<div id="dialog-confirm" class="" title="Delete label?">
+    <p class="">
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+        This label will be deleted. Are you sure?
+    </p>
+</div>
+
+@if (totalCount > 0)
+{
+    <hr />
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>System Type?</th>
+                    <th>Label List Visibility</th>
+                    <th>Message List Visibility</th>
+                    <th />
+                    <th />
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Labels.OrderByDescending(o => o.IsSystemType).ThenBy(o => o.Name))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(o => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(o => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(o => item.IsSystemType, new { @class = "checkbox" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(o => item.LabelListVisibilityType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(o => item.MessageListVisibilityType)
+                        </td>
+                        <td>
+                            @if (item.IsUserType)
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                            }
+                        </td>
+                        <td>
+                            @if (item.IsUserType)
+                            {
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "deleteLink", @name = item.Name })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@section styles {
+    @Styles.Render("~/Content/jquery-ui/css")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jquery-ui")
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#dialog-confirm").dialog({
+                dialogClass: "no-close",
+                autoOpen: false,
+                resizable: false,
+                minHeight: 140,
+                modal: true,
+            })
+
+            $(".deleteLink").click(function (e) {
+                e.preventDefault();
+                var labelName = $(this).attr("name");
+                var targetUrl = $(this).attr("href");
+
+                $("#dialog-confirm").dialog({
+                    buttons: {
+                        "OK": function () {
+                            $(this).dialog("close");
+                            window.location.href = targetUrl;
+                        },
+                        "Cancel": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                $("#dialog-confirm").dialog("open");
+            });
+        });
+    </script>
+}

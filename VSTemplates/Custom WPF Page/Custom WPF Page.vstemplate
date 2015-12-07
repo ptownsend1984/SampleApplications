@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VSTemplate Version="3.0.0" Type="Item" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.microsoft.com/developer/vstemplate/2005">
+  <TemplateData>
+	<TemplateID>PeteApps.CustomWPFPage</TemplateID>
+	<Name>Custom WPF Page</Name>
+	<Description>My custom C Sharp WPF Page.</Description>
+	<ProjectType>CSharp</ProjectType>
+    <DefaultName>Custom WPF Page.xaml</DefaultName>
+    <TemplateGroupID>WPF</TemplateGroupID>
+	<AppliesTo>CSharp + WindowsXaml + WindowsXamlPage + WindowsXamlCodeBehind + MultiTarget</AppliesTo>
+    <SortOrder>21</SortOrder>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>System</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>WindowsBase</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationCore</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>PresentationFramework</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem ReplaceParameters="true" CustomTool="MSBuild:Compile">Custom WPF Page.xaml</ProjectItem>
+    <ProjectItem ReplaceParameters="true" SubType="Code" TargetFileName="$fileinputname$.xaml.cs">Custom WPF Page.xaml.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

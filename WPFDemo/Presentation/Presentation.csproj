@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{04C45821-12EB-4CAD-8F51-849404DE1A93}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPFDemo.Presentation</RootNamespace>
+    <AssemblyName>WPFDemo.Presentation</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Behaviors\AdornerExtensions.cs" />
+    <Compile Include="Behaviors\ControlExtensions.cs" />
+    <Compile Include="Behaviors\KeyboardExtensions.cs" />
+    <Compile Include="Behaviors\MouseExtensions.cs" />
+    <Compile Include="Behaviors\Navigation.cs" />
+    <Compile Include="Behaviors\Resources.cs" />
+    <Compile Include="Behaviors\SystemExtensions.cs" />
+    <Compile Include="Common\EventArgs.cs" />
+    <Compile Include="ControlPlacement.cs" />
+    <Compile Include="Controls\Adorner\ContentAdorner.cs" />
+    <Compile Include="Controls\Adorner\RectangleAdorner.cs" />
+    <Compile Include="Controls\Button\AccessTextButton.cs" />
+    <Compile Include="Controls\Button\ImageButton.cs" />
+    <Compile Include="Controls\Button\ImageRadioButton.cs" />
+    <Compile Include="Controls\Button\ImageTextButton.cs" />
+    <Compile Include="Controls\CheckBox\AccessTextCheckBox.cs" />
+    <Compile Include="Controls\CheckBox\StarCheckBox.cs" />
+    <Compile Include="Controls\Common\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DateTimePicker\DateTimePickerWrapper.xaml.cs">
+      <DependentUpon>DateTimePickerWrapper.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\ListBox\CheckedListBoxEx.cs" />
+    <Compile Include="Controls\ListBox\CheckedListBoxExItem.cs" />
+    <Compile Include="Controls\Panel\AlignableWrapPanel.cs" />
+    <Compile Include="Controls\Spinner\ButtonSpinner.cs" />
+    <Compile Include="Controls\Spinner\SpinnerBase.cs" />
+    <Compile Include="Controls\TextBox\CurrencyTextBox.cs" />
+    <Compile Include="Controls\TextBox\DecimalTextBox.cs" />
+    <Compile Include="Controls\TextBox\IntegerTextBox.cs" />
+    <Compile Include="Controls\UpDown\IntegerUpDown.cs" />
+    <Compile Include="Controls\UpDown\NumericUpDownBase.Generic.cs" />
+    <Compile Include="Controls\UpDown\UpDownBase.cs" />
+    <Compile Include="Converters\AccessKeyConverter.cs" />
+    <Compile Include="Converters\AllCapsConverter.cs" />
+    <Compile Include="Converters\AppendStringConverter.cs" />
+    <Compile Include="Converters\BindableParameterConverter.cs" />
+    <Compile Include="Converters\BooleanMultiConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityLayoutConverter.cs" />
+    <Compile Include="Converters\BooleanToWaitCursorConverter.cs" />
+    <Compile Include="Converters\ByteArrayImageSourceConverter.cs" />
+    <Compile Include="Converters\CharacterCodeConverter.cs" />
+    <Compile Include="Converters\CurrencyStringConverter.cs" />
+    <Compile Include="Converters\DateTimeShortStringConverter.cs" />
+    <Compile Include="Converters\DateTimeStringConverter.cs" />
+    <Compile Include="Converters\DayOfWeekNameConverter.cs" />
+    <Compile Include="Converters\DecimalStringConverter.cs" />
+    <Compile Include="Converters\GdiBitmapConverter.cs" />
+    <Compile Include="Converters\ImageBoundsConverter.cs" />
+    <Compile Include="Converters\IntegerStringConverter.cs" />
+    <Compile Include="Converters\IsNotNullConverter.cs" />
+    <Compile Include="Converters\IsNotNullToVisibilityConverter.cs" />
+    <Compile Include="Converters\IsNullConverter.cs" />
+    <Compile Include="Converters\IsNullToVisibilityConverter.cs" />
+    <Compile Include="Converters\ReverseBooleanConverter.cs" />
+    <Compile Include="Converters\ReverseBooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\ReverseBooleanToVisibilityLayoutConverter.cs" />
+    <Compile Include="Converters\ShortestDayOfWeekNameConverter.cs" />
+    <Compile Include="Converters\SumPercentageConverter.cs" />
+    <Compile Include="Converters\ValueConverterMarkupExtension.Generic.cs" />
+    <Compile Include="Converters\ValueMultiConverterMarkupExtension.Generic.cs" />
+    <Compile Include="Converters\ValueSingleMultiConverterMarkupExtension.Generic.cs" />
+    <Compile Include="DemoWindow.cs" />
+    <Compile Include="EventManagers\DataContextChangedEventManager.cs" />
+    <Compile Include="EventManagers\DoubleClickEventManager.cs" />
+    <Compile Include="EventManagers\GotKeyboardFocusEventManager.cs" />
+    <Compile Include="EventManagers\ItemContainerGeneratorStatusChangedEventManager.cs" />
+    <Compile Include="EventManagers\PasswordChangedEventManager.cs" />
+    <Compile Include="EventManagers\PreviewKeyDownEventManager.cs" />
+    <Compile Include="EventManagers\PreviewMouseDownEventManager.cs" />
+    <Compile Include="EventManagers\PreviewMouseMoveEventManager.cs" />
+    <Compile Include="EventManagers\PreviewMouseWheelEventManager.cs" />
+    <Compile Include="Forms\TabStopPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="themes\ThemeAttributes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{85927C37-D8FE-42E8-B94B-3D684C900654}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
+      <Project>{358B05C2-A834-4FC7-B582-A3947E5D8819}</Project>
+      <Name>ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\Common\CircularProgressBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\DateTimePicker\DateTimePickerWrapper.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\Controls\ButtonThemes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="themes\Controls\CheckBoxThemes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\Controls\UpDownThemes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\Controls\SpinnerThemes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\Controls\ListBoxThemes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\star.png" />
+    <Resource Include="Resources\star_DIS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\star_HOT.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

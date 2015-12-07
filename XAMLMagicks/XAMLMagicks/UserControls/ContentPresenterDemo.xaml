@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="XAMLMagicks.UserControls.ContentPresenterDemo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:u="clr-namespace:XAMLMagicks.UserControls"
+             xmlns:bev="clr-namespace:XAMLMagicks.Behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/XAMLMagicks;component/Styles/Storyboards.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate x:Key="TextBlockUserControlTemplate">
+                <u:TextBlockUserControl bev:Navigation.InitialFocus="True" bev:Navigation.InitialFocusSpecificElementName="TextBoxTwo" 
+                                        />
+            </DataTemplate>
+            <DataTemplate x:Key="CatTemplate">
+                <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                           Source="/XAMLMagicks;component/Resources/Catface.jpg"
+                           />
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel>
+        <ComboBox x:Name="ContentTemplateComboBox">
+            <ComboBoxItem Content="No Content Template" IsSelected="True" />
+            <ComboBoxItem Content="TextBlockUserControl" />
+            <ComboBoxItem Content="CatTemplate" />
+        </ComboBox>
+        <ContentPresenter Focusable="False"
+                          >
+            <ContentPresenter.RenderTransform>
+                <TranslateTransform X="0" Y="0" />
+            </ContentPresenter.RenderTransform>
+            <ContentPresenter.Style>
+                <Style TargetType="{x:Type ContentPresenter}">
+                    <Setter Property="ContentTemplate" Value="{x:Null}" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=ContentTemplateComboBox}" Value="TextBlockUserControl">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TextBlockUserControlTemplate}" />
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="EnterTextBlockUserControlStoryboard" Storyboard="{StaticResource SlideInFromLeft600Storyboard}" />
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="EnterTextBlockUserControlStoryboard" />
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Text, ElementName=ContentTemplateComboBox}" Value="CatTemplate">
+                            <Setter Property="ContentTemplate" Value="{StaticResource CatTemplate}" />
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard x:Name="EnterCatStoryboard" Storyboard="{StaticResource FlashElementStoryboard}" />
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="EnterCatStoryboard" />
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentPresenter.Style>
+        </ContentPresenter>
+    </StackPanel>
+</UserControl>

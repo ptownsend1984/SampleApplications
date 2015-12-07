@@ -1,0 +1,112 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.btn-google {
+    background: url(/Content/Images/Red-signin_Long_press_44dp.png);
+    background: url(/Content/Images/Red-signin_Long_hover_44dp.png);
+    background: url(/Content/Images/Red-signin_Long_base_44dp.png);
+    background-repeat: no-repeat;
+    width: 492px;
+    height: 108px;
+    border: 0;
+}
+
+    .btn-google:hover {
+        background: url(/Content/Images/Red-signin_Long_hover_44dp.png);
+    }
+
+    .btn-google:active {
+        background: url(/Content/Images/Red-signin_Long_press_44dp.png);
+    }
+
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+.multiline {
+    white-space: pre-wrap;
+}
+
+.input-double-width {
+    max-width: 560px;
+}
+
+.no-resize {
+    resize: none;
+}
+
+.equal {  
+    margin-bottom: -99999px;
+    padding-bottom: 99999px; 
+}
+
+.min180 {
+    min-height: 180px;
+}
+
+/*
+    .checkbox-inline.no_indent,
+.checkbox-inline.no_indent+.checkbox-inline.no_indent {
+  margin-left: 0;
+  margin-right: 10px;
+}
+.checkbox-inline.no_indent:last-child {
+  margin-right: 0;
+}
+*/
+
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}

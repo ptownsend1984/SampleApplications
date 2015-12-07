@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="XAMLMagicks.UserControls.SimpleThemedControlsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:b="clr-namespace:XAMLMagicks.Controls.Button"
+             xmlns:ck="clr-namespace:XAMLMagicks.Controls.CheckBox"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.CommandBindings>
+        <CommandBinding x:Name="CloseCommandBinding" Command="Close"
+                        Executed="CloseCommandBinding_Executed"
+                        CanExecute="CloseCommandBinding_CanExecute"
+                        />
+    </UserControl.CommandBindings>
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type b:ImageRadioButton}">
+                <Setter Property="MouseOverEffect">
+                    <Setter.Value>
+                        <BlurBitmapEffect Radius="5" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </StackPanel.Resources>
+        <TextBlock Text="Click the below cat to close the program." TextWrapping="Wrap" />
+        <b:ImageButton Image="/XAMLMagicks;component/Resources/YellowCat.jpg"
+                       Width="100"
+                       Command="Close" 
+                       />
+        <TextBlock Text="These cats form a radio button group." TextWrapping="Wrap" />
+        <WrapPanel>
+            <b:ImageRadioButton GroupName="Cats" Width="96" VerticalAlignment="Center"
+                                Image="/XAMLMagicks;component/Resources/carrotCat.jpg"                                
+                                />
+            <b:ImageRadioButton GroupName="Cats" Width="96" VerticalAlignment="Center"
+                                Image="/XAMLMagicks;component/Resources/LimeHelmetCat.jpg"
+                                />
+            <b:ImageRadioButton GroupName="Cats" Width="96" VerticalAlignment="Center"
+                                Image="/XAMLMagicks;component/Resources/watermelonCat.jpg"
+                                />
+        </WrapPanel>
+        <TextBlock Text="A happy cat check box." TextWrapping="Wrap" />
+        <ck:CatCheckBox CatMaxWidth="64" CatMaxHeight="64" Content="Cat" IsChecked="False" />
+    </StackPanel>
+</UserControl>

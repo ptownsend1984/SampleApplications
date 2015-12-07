@@ -1,0 +1,68 @@
+﻿<Window x:Class="ImageOrganizer.Windows.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:bev="clr-namespace:ImageOrganizer.Presentation.Behaviors;assembly=ImageOrganizer.Presentation"
+        Title="About Image Organizer"
+        mc:Ignorable="d" ResizeMode="NoResize" WindowStyle="ToolWindow"
+        Width="325" Height="Auto" SizeToContent="Height"
+        >
+    <Grid Margin="5pt">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="10pt" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <TextBlock>
+                <TextBlock Text="The purpose of this program is purely educational and is provided as-is.  Feel free to take whatever you want from the source code." 
+                           TextWrapping="Wrap"
+                           />
+                <LineBreak />
+                <TextBlock Text="Written by Peter Townsend." 
+                           TextWrapping="Wrap"
+                           />
+                <LineBreak />
+                <Hyperlink bev:ControlExtensions.LaunchHyperlink="True"
+                           NavigateUri="http://petesdemoapps.codeplex.com"
+                           >http://petesdemoapps.codeplex.com</Hyperlink>
+                <LineBreak />
+                <TextBlock Text="Icons from the FatCow Icon Pack under the Creative Commons Attribution 3.0 License." 
+                           TextWrapping="Wrap"
+                           />
+                <LineBreak />
+                <Hyperlink bev:ControlExtensions.LaunchHyperlink="True"
+                           NavigateUri="http://www.fatcow.com/free-icons"
+                           >http://www.fatcow.com/free-icons</Hyperlink>
+                <LineBreak />
+                <TextBlock Text="Windows API Code Pack from:" 
+                           TextWrapping="Wrap"
+                           />
+                <LineBreak />
+                <Hyperlink bev:ControlExtensions.LaunchHyperlink="True"
+                           NavigateUri="http://archive.msdn.microsoft.com/WindowsAPICodePack"
+                           >http://archive.msdn.microsoft.com/WindowsAPICodePack</Hyperlink>
+                 <LineBreak />
+                <TextBlock Text="Microsoft Prism Library from:" 
+                           TextWrapping="Wrap"
+                           />
+                <LineBreak />
+               <Hyperlink bev:ControlExtensions.LaunchHyperlink="True"
+                          NavigateUri="http://msdn.microsoft.com/en-us/library/ff648611.aspx"
+                          >http://msdn.microsoft.com/en-us/library/ff648611.aspx</Hyperlink>
+            </TextBlock>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button MinWidth="75" MinHeight="23" Grid.Column="1"
+                    Content="_OK"
+                    IsDefault="True"
+                    IsCancel="True"
+                    />
+        </Grid>
+    </Grid>
+</Window>

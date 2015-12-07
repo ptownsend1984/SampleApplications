@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Reflection.Controls.TypesBasicInfoControl"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:c="clr-namespace:Reflection.Controls"
+			 mc:Ignorable="d" 
+			 >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ContextMenu x:Key="ContextMenu">
+                <MenuItem Header="_Debugger Break"
+                          Command="{Binding DebuggerBreakCommand}"
+                          />
+            </ContextMenu>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <StackPanel Orientation="Vertical" ContextMenu="{StaticResource ContextMenu}"
+                Background="Transparent"
+                >
+        <TextBlock Text="{Binding AssemblyQualifiedName, FallbackValue='Type Name'}" Style="{StaticResource H2TextBlock}" TextWrapping="Wrap" />
+        <WrapPanel Orientation="Horizontal">
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsAbstract" IsChecked="{Binding Info.IsAbstract, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsClass" IsChecked="{Binding Info.IsClass, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsEnum" IsChecked="{Binding Info.IsEnum, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsInterface" IsChecked="{Binding Info.IsInterface, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsPublic" IsChecked="{Binding Info.IsPublic, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsNotPublic" IsChecked="{Binding Info.IsNotPublic, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsSealed" IsChecked="{Binding Info.IsSealed, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsSerializable" IsChecked="{Binding Info.IsSerializable, Mode=OneWay}" />
+            <CheckBox Style="{StaticResource WrapInfinityCheckBox}" Content="IsValueType" IsChecked="{Binding Info.IsValueType, Mode=OneWay}" />
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

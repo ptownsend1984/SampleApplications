@@ -1,0 +1,60 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <ControlTemplate TargetType="{x:Type Button}" x:Key="FlatButtonTemplate">
+        <ContentPresenter RecognizesAccessKey="True" 
+                          Content="{TemplateBinding ContentControl.Content}" 
+                          ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                          ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                          Margin="{TemplateBinding Control.Padding}"
+                          HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand" />
+            </Trigger>
+            <Trigger Property="UIElement.IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <DynamicResource ResourceKey="{x:Static SystemColors.GrayTextBrushKey}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type Button}" x:Key="FlatButton">
+        <Setter Property="Template" Value="{StaticResource FlatButtonTemplate}" />
+    </Style>
+
+    <ControlTemplate TargetType="{x:Type ToggleButton}" x:Key="FlatToggleButtonTemplate">
+        <ContentPresenter RecognizesAccessKey="True" 
+                            Content="{TemplateBinding ContentControl.Content}" 
+                            ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}" 
+                            ContentStringFormat="{TemplateBinding ContentControl.ContentStringFormat}" 
+                            Margin="{TemplateBinding Control.Padding}" 
+                            HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}" 
+                            VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}" 
+                            SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand" />
+            </Trigger>
+            <Trigger Property="UIElement.IsEnabled" Value="False">
+                <Setter Property="TextElement.Foreground">
+                    <Setter.Value>
+                        <DynamicResource ResourceKey="{x:Static SystemColors.GrayTextBrushKey}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style TargetType="{x:Type ToggleButton}" x:Key="FlatToggleButton">
+        <Setter Property="Template" Value="{StaticResource FlatToggleButtonTemplate}" />
+        <Setter Property="BorderBrush" Value="{x:Null}" />
+        <Setter Property="BorderThickness" Value="1pt" />
+    </Style>
+
+</ResourceDictionary>
+

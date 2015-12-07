@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="XAMLMagicks.UserControls.CheckedListBoxDemoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lst="clr-namespace:XAMLMagicks.Controls.ListBox"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBox Text="An example checked list box." TextWrapping="Wrap" />
+                <lst:CheckedListBox ItemsSource="{Binding SelectableItems}" />
+            </StackPanel>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBox Text="The same list box with a different item template." TextWrapping="Wrap" />
+                <lst:CheckedListBox ItemsSource="{Binding SelectableItems}">
+                    <lst:CheckedListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type lst:CheckedListBoxItem}">
+                            <Border BorderThickness="1"
+                                    BorderBrush="Red"
+                                    Padding="5pt"
+                                    >
+                                <CheckBox x:Name="PART_CheckBox"
+                                          Grid.Column="0"
+                                          IsChecked="{Binding IsSelected}"
+                                          Content="{Binding DisplayName}"
+                                          />
+                            </Border>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                                    <Setter TargetName="PART_CheckBox" Property="Foreground" Value="Purple" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </lst:CheckedListBox.ItemTemplate>
+                </lst:CheckedListBox>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,48 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    >
+    <Storyboard x:Key="FlashElementStoryboard">
+        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" 
+                                           Storyboard.TargetProperty="(UIElement.Visibility)">
+            <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Hidden}"/>
+            <DiscreteObjectKeyFrame KeyTime="00:00:00.2000000" Value="{x:Static Visibility.Visible}"/>
+            <DiscreteObjectKeyFrame KeyTime="00:00:00.4000000" Value="{x:Static Visibility.Hidden}"/>
+            <DiscreteObjectKeyFrame KeyTime="00:00:00.6000000" Value="{x:Static Visibility.Visible}"/>
+            <DiscreteObjectKeyFrame KeyTime="00:00:00.8000000" Value="{x:Static Visibility.Hidden}"/>
+            <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Visible}"/>
+        </ObjectAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="FadeInStoryboard">
+        <DoubleAnimation Storyboard.TargetProperty="(UIElement.Opacity)" From="0" To="1" Duration="0:0:1" />
+    </Storyboard>
+    <Storyboard x:Key="SlideInFromLeft600Storyboard">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Duration="0:0:.3">
+            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0" />
+            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:.3" />
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="-600" To="0" Duration="0:0:.3" />
+    </Storyboard>
+    <Storyboard x:Key="SlideOutToLeft600Storyboard">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Duration="0:0:.3">
+            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:.3" />
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="0" To="-600" Duration="0:0:.3" />
+    </Storyboard>
+    <Storyboard x:Key="SlideInFromRight600Storyboard">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Duration="0:0:.3">
+            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:0" />
+            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:.3" />
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="600" To="0" Duration="0:0:.3" />
+    </Storyboard>
+    <Storyboard x:Key="SlideOutToRight600Storyboard">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Duration="0:0:.3">
+            <LinearDoubleKeyFrame Value="1" KeyTime="0:0:0" />
+            <LinearDoubleKeyFrame Value="0" KeyTime="0:0:.3" />
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="0" To="600" Duration="0:0:.3" />
+    </Storyboard>
+</ResourceDictionary>
+

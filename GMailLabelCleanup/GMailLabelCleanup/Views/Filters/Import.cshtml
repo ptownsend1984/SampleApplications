@@ -1,0 +1,50 @@
+﻿@model GMailLabelCleanup.Core.ViewModels.Filters.ImportViewModel
+@{
+    ViewBag.Title = "Filters";
+}
+
+<h2>Import filters</h2>
+
+@using (Html.BeginForm("Import", "Filters", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UploadFile, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.UploadFile, "UploadFile", new { htmlAttributes = new { @class = "initialFocus form-control" } })*@
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <span class="btn btn-primary btn-file">
+                            Browse
+                            @Html.TextBoxFor(model => model.UploadFile, null, new { type = "file", @class = "initialFocus form-control" })
+                        </span>
+                    </span>
+                    <input id="uploadFileName" type="text" class="form-control" readonly />
+                </div>
+                @Html.ValidationMessageFor(model => model.UploadFile, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Import" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {            
+            $('.btn-file :file').change(function () {
+                var fileName = $(this).val();
+                $('#uploadFileName').val(fileName);
+            });
+        });
+    </script>
+}

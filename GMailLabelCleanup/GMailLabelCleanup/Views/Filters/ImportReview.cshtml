@@ -1,0 +1,77 @@
+﻿@using GMailLabelCleanup.Core.Components
+@using GMailLabelCleanup.Core.Utilities
+@model GMailLabelCleanup.Core.ViewModels.Filters.ReviewViewModel
+@{
+    ViewBag.Title = "Filters";
+    var component = new MessageFilterComponent();
+    var totalCount = Model.Entries.Count;
+}
+
+<h2>Review filters</h2>
+<h4>Found @totalCount filter@(totalCount != 1 ? "s" : "").</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(o => o.MessageFilterId)
+    <div>
+        <p>
+            @if (totalCount > 0)
+            {
+                <input type="submit" name="postAction" value="Continue" class="btn btn-primary" />
+                <input type="submit" name="postAction" value="Trash" class="btn btn-info" />
+            }
+            else
+            {
+                <input type="submit" name="postAction" value="Try another file" class="btn btn-info" />
+            }
+        </p>
+    </div>
+    if (totalCount > 0)
+    {
+        <div class="row">
+            <div>
+                <p>
+                    <label class="checkbox checkbox-inline">
+                        @Html.CheckBoxFor(o => o.SelectAll, new { @id = "selectAll", @class = "checkbox checkbox-inline" })Select all
+                    </label>
+                </p>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-md-1">Selected</th>
+                        <th class="col-md-1">Id</th>
+                        <th class="col-md-4">Criteria</th>
+                        <th class="col-md-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Entries.Count; i++)
+                    {
+                        @Html.Partial("_ChooseMessageFilterEntryPartial", Model.Entries[i], "Entries[" + i.ToString() + "]")
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $("#selectAll").click(function () {
+                $(".isSelected").prop('checked', this.checked)
+            });
+            $(".isSelected").click(function () {
+                if (!this.checked) {
+                    $("#selectAll").prop('checked', false);
+                }
+                else if ($(".isSelected").length == $(".isSelected:checked").length) {
+                    $("#selectAll").prop('checked', true);
+                }
+            });
+        });
+    </script>
+}

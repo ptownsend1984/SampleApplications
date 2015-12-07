@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="XAMLMagicks.UserControls.UpDownDemoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ud="clr-namespace:XAMLMagicks.Controls.UpDown"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <StackPanel>
+            <TextBox Text="This is an Integer Up Down custom control." TextWrapping="Wrap" />
+            <ud:IntegerUpDown Value="{Binding Width}" MinimumValue="10" MaximumValue="1024" />
+            <Image Width="{Binding Width, FallbackValue='300'}" 
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="/XAMLMagicks;component/Resources/UnhappyCat.jpg" 
+                    Stretch="UniformToFill"
+                    />
+        </StackPanel>
+    </Grid>
+</UserControl>

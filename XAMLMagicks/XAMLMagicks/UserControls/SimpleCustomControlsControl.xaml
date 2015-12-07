@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="XAMLMagicks.UserControls.SimpleCustomControlsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:t="clr-namespace:XAMLMagicks.Controls.TextBox"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Integer only text box:" TextWrapping="Wrap" />
+            <t:IntegerTextBox />
+            <TextBlock Text="Decimal only text box:" TextWrapping="Wrap" />
+            <t:DecimalTextBox />
+        </StackPanel>
+    </Grid>
+</UserControl>
